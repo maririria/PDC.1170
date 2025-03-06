@@ -31,3 +31,9 @@ int main() {
 
         printf("Run %d: Sum = %lld, Time Taken = %f seconds\n", run + 1, totalSum, timeTaken);
     }
+
+printf("\nAverage Execution Time: %f seconds\n", totalTime / 10);
+
+free(arr);
+return 0;
+}
