@@ -16,3 +16,18 @@ int main() {
 
     long long totalSum = 0;
     double totalTime = 0.0;
+
+    for (int run = 0; run < 10; run++) {
+        totalSum = 0; 
+        clock_t start = clock(); 
+
+        for (int i = 0; i < SIZE; i++) {
+            totalSum += arr[i]; 
+        }
+
+        clock_t end = clock(); 
+        double timeTaken = ((double)(end - start)) / CLOCKS_PER_SEC;
+        totalTime += timeTaken;
+
+        printf("Run %d: Sum = %lld, Time Taken = %f seconds\n", run + 1, totalSum, timeTaken);
+    }
