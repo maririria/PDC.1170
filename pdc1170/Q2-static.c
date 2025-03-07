@@ -19,4 +19,5 @@ int main() {
     long long totalSum = 0;
     double totalTime = 0.0;
 
+    omp_set_num_threads(NUM_THREADS);
 }
