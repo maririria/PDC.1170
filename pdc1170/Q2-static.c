@@ -11,4 +11,12 @@ int main() {
         printf("Memory allocation failed!\n");
         return 1;
     }
+
+    for (int i = 0; i < SIZE; i++) {
+        arr[i] = 1;
+    }
+
+    long long totalSum = 0;
+    double totalTime = 0.0;
+
 }
