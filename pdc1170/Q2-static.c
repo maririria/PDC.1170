@@ -50,4 +50,15 @@ int main() {
 
     printf("\nAverage Execution Time (Static Scheduling with Critical Section): %f seconds\n", totalTime / 10);
 
+    totalSum = 0;
+    double start = omp_get_wtime();
+    
+    #pragma omp parallel for reduction(+:totalSum) schedule(static)
+    for (int i = 0; i < SIZE; i++) {
+        totalSum += arr[i];
+    }
+
+    double end = omp_get_wtime();
+    printf("Static Sum (Using Reduction): %lld, Time = %f seconds\n", totalSum, end - start);
+
         }
