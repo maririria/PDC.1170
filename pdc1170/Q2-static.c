@@ -20,4 +20,19 @@ int main() {
     double totalTime = 0.0;
 
     omp_set_num_threads(NUM_THREADS);
+
+    
+    for (int run = 0; run < 10; run++) {
+        totalSum = 0;
+        double start = omp_get_wtime(); // Start time
+
+        #pragma omp parallel 
+        {
+            long long localSum = 0;  // ✅ Moved inside to ensure proper scope
+
+            #pragma omp for schedule(static)
+            for (int i = 0; i < SIZE; i++) {
+                localSum += arr[i];
+            }
+        }
 }
