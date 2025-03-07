@@ -46,4 +46,15 @@ int main(){
 
     printf("\nAverage Execution Time (Dynamic Scheduling with Atomic): %f seconds\n", totalTime / 10);
 
+    totalSum = 0;
+    double start = omp_get_wtime();
+    
+    #pragma omp parallel for reduction(+:totalSum) schedule(dynamic)
+    for (int i = 0; i < SIZE; i++) {
+        totalSum += arr[i];
+    }
+
+    double end = omp_get_wtime();
+    printf("Dynamic Sum (Using Reduction): %lld, Time = %f seconds\n", totalSum, end - start);
+
         }
