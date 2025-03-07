@@ -32,5 +32,18 @@ int main(){
             for (int i = 0; i < SIZE; i++) {
                 localSum += arr[i];
             }
+
+            #pragma omp atomic
+            totalSum += localSum;
         }
-}
+
+        double end = omp_get_wtime(); // End time
+        double timeTaken = end - start;
+        totalTime += timeTaken;
+
+        printf("Dynamic Run %d: Sum = %lld, Time = %f seconds\n", run + 1, totalSum, timeTaken);
+    }
+
+    printf("\nAverage Execution Time (Dynamic Scheduling with Atomic): %f seconds\n", totalTime / 10);
+
+        }
