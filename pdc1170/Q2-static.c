@@ -61,4 +61,6 @@ int main() {
     double end = omp_get_wtime();
     printf("Static Sum (Using Reduction): %lld, Time = %f seconds\n", totalSum, end - start);
 
-        }
+    free(arr);
+    return 0;
+    }
